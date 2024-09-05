@@ -10,12 +10,12 @@ module.exports = (body, id = proximoId) => {
     !isNaN(body.lancadoEm.valueOf()) &&
     estudio.show(body.idEstudio) &&
     publicadora.show(body.idPublicadora) &&
-    genero.show(body.idGenero)
+    body.idGeneros.every(idGenero => genero.show(idGenero))
   ) {
     return {
       id: id,
       nome: body.nome,
-      idGenero: body.idGenero,
+      idGeneros: body.idGeneros,
       idEstudio: body.idEstudio,
       idPublicadora: body.idPublicadora,
       lancadoEm: body.lancadoEm,
