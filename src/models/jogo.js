@@ -7,8 +7,6 @@ module.exports = (body, id = proximoId) => {
   if (
     body.nome != undefined &&
     body.nome != "" &&
-    !isNaN(body.criadoEm.valueOf()) &&
-    !isNaN(body.atualizadoEm.valueOf()) &&
     !isNaN(body.lancadoEm.valueOf()) &&
     estudio.show(body.idEstudio) &&
     publicadora.show(body.idPublicadora) &&
@@ -20,9 +18,9 @@ module.exports = (body, id = proximoId) => {
       idGenero: body.idGenero,
       idEstudio: body.idEstudio,
       idPublicadora: body.idPublicadora,
-      criadoEm: body.criadoEm,
-      atualizadoEm: body.atualizadoEm,
       lancadoEm: body.lancadoEm,
+      criadoEm: body.criadoEm ? body.criadoEm : new Date(), 
+      atualizadoEm: new Date()
     };
   }
 };
