@@ -1,8 +1,9 @@
 const estudio_controller = require("../controllers/estudio.js");
 const express = require("express");
+const uppercase = require("../middlewares/uppercase.js");
 const router = express.Router();
 
-router.post("/", (req, res) => {
+router.post("/", uppercase, (req, res) => {
   const code = estudio_controller.store(req.body);
   res.status(code).json();
 });
@@ -17,7 +18,7 @@ router.get("/:id", (req, res) => {
   res.json(elemento);
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", uppercase, (req, res) => {
   const alterado = estudio_controller.update(req.body, req.params.id);
   res.status(alterado).json();
 });

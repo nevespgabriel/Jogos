@@ -18,7 +18,7 @@ module.exports = (body, id = proximoId) => {
       idGeneros: body.idGeneros,
       idEstudio: body.idEstudio,
       idPublicadora: body.idPublicadora,
-      lancadoEm: body.lancadoEm,
+      lancadoEm: new Date(body.lancadoEm),
       criadoEm: body.criadoEm ? body.criadoEm : new Date(), 
       atualizadoEm: new Date()
     };
