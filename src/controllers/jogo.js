@@ -10,7 +10,13 @@ const store = (body) => {
   return 400;
 };
 
-const index = () => db;
+const index = (query) => {
+  let filtro = db;
+  if(query){
+    
+  }
+  return filtro;
+};
 
 const show = (id) => db.find((el) => el.id == id);
 

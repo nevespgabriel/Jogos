@@ -1,14 +1,15 @@
 const jogo_controller = require("../controllers/jogo.js");
 const express = require("express");
+const uppercase = require("../middlewares/uppercase.js");
 const router = express.Router();
 
-router.post("/", (req, res) => {
+router.post("/", uppercase, (req, res) => {
   const code = jogo_controller.store(req.body);
   res.status(code).json();
 });
 
 router.get("/", (req, res) => {
-  const elementos = jogo_controller.index();
+  const elementos = jogo_controller.index(req.query);
   res.json(elementos);
 });
 
@@ -17,7 +18,7 @@ router.get("/:id", (req, res) => {
   res.json(elemento);
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", uppercase, (req, res) => {
   const alterado = jogo_controller.update(req.body, req.params.id);
   res.status(alterado).json();
 });
